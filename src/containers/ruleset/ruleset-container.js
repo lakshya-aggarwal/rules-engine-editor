@@ -39,6 +39,26 @@ class RulesetContainer extends Component {
       link.download = ruleset.name +'.json';
       link.href = url;
       link.click();
+        const url2 = "https://285361-aemzuora-gmrulesengine.adobeio-static.net/api/v1/web/dx-excshell-1/save-rule";
+        const data = {
+            rules: ruleset
+        };
+
+        fetch(url2, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                // eslint-disable-next-line no-console
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
       this.setState({ generateFlag: true });
     }
 
@@ -52,7 +72,7 @@ class RulesetContainer extends Component {
           success
           title={"File generated!"}
           onConfirm={this.cancelAlert}
-        > {`${name} rule is succefully generated at your default download location`}
+        > {`${name} rule is successfully generated at your default download location`}
         </SweetAlert>);
     }
 

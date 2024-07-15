@@ -41,7 +41,7 @@ class RulesetContainer extends Component {
       link.click();
         const url2 = "https://285361-aemzuora-gmrulesengine.adobeio-static.net/api/v1/web/dx-excshell-1/save-rule";
         const data = {
-            rules: ruleset
+            rules: ruleset.decisions
         };
 
         fetch(url2, {
